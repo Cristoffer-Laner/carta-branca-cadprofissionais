@@ -1,4 +1,13 @@
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
 export default function ItensLista(props){
+
+	function confirmaExclusao(id, nome){
+		if (confirm(`Confirma Exclusao do Profissional "${nome}"?`)){
+			props.exclusao(id)
+		}
+
+	}
 	return(
 		<tr>
 			<td>
@@ -9,7 +18,12 @@ export default function ItensLista(props){
 			<td>{props.profissional.CPF}</td>
 			<td>{props.profissional.dataNasc}</td>
 			<td>{props.profissional.especialidade}</td>
-			<td></td>
+			<td>
+				<i class="bi bi-x-circle-fill text-danger"
+				style={{fontSize:36, cursor: 'pointer'}}
+				title='Excluir'
+				onClick={() => confirmaExclusao(props.profissional.id, props.profissional.nome)}></i>
+			</td>
 		</tr>
 	)
 }

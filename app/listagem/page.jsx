@@ -16,10 +16,19 @@ export default function Listagem() {
 		getProfissionais()
 	}, [])
 
+	async function excluiProfissional(id){
+		await fetch("http://localhost:3004/profissionais/"+id, {
+			method:"DELETE"
+		})
+		const novoDados = profissionais.filter(profissional => profissional.id != id)
+		setProfissionais(novoDados)
+	}
+
 	const listaProfissionais = profissionais.map(profissional => (
 		<ItensLista
 			key={profissional.id}
 			profissional={profissional}
+			exclusao={() => excluiProfissional(profissional.id)}
 		/>
 	))
 
