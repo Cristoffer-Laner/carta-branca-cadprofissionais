@@ -2,11 +2,11 @@
 import { useForm } from 'react-hook-form'
 
 export default function Cadastro() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm()
 
     async function enviaDados(data) {
+		//boa pratica usando try catch
         try {
-            console.log("entreiaqui");
             const profissional = await fetch("http://localhost:3004/profissionais", {
                 method: "POST",
                 headers: {
@@ -14,6 +14,7 @@ export default function Cadastro() {
                 },
                 body: JSON.stringify({ ...data })
             })
+			reset()
         } catch (error) {
             console.log("erro")
             alert("Erro!")
@@ -32,7 +33,7 @@ export default function Cadastro() {
                     </div>
                     <div className="col-sm-6 my-2">
                         <label for="CPF" className="form-label">CPF</label>
-                        <input type="number" className="form-control" id="CPF" {...register("CPF")} required />
+                        <input type="text" className="form-control" id="CPF" {...register("CPF")} required />
                     </div>
                 </div>
 
@@ -48,7 +49,7 @@ export default function Cadastro() {
                     <div className="col-sm-4 my-2">
                         <label for="especialidade" className="form-label">Especialidade</label>
                         <select className="form-select" id="especialidade" {...register("especialidade")} required >
-                            <option selected>Selecione -</option>
+                            <option selected>Selecione</option>
                             <option value="black-work">Black Work</option>
                             <option value="pontilhismo">Pontilhismo</option>
                             <option value="old-school">Old School</option>
@@ -62,12 +63,12 @@ export default function Cadastro() {
                 <div className="row">
                     <div className="col-sm-6 my-2">
                         <label for="imagem" className="form-label">Foto de Perfil</label>
-                        <input type="file" className="form-control" id="imagem" />
+                        <input type="url" className="form-control" id="imagem" {...register("imagem")} required/>
                     </div>
                 </div>
 
-                <input type="submit" className="btn btn-primary me-3 mt-2" value="Cadastrar" />
-                <input type="button" className="btn btn-danger mt-2" value="Limpar" />
+                <input type="submit" className="btn bg-dark me-3 mt-2 text-light" value="Cadastrar" />
+                <input type="button" className="btn bg-dark mt-2 text-light" value="Limpar" onClick={() => reset()}/>
             </form >
         </div >
     )

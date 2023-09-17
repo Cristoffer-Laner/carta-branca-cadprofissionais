@@ -9,7 +9,7 @@ export default function Titulo() {
             <Link className="nav-link text-light fs-6" href="/cadastro">Cadastro</Link>
           </li>
           <Link className="navbar-brand" href="/">
-            <img src="./cartaBranca.png" alt="Logo" width="62" height="48" class="d-inline-block align-text-top" />
+            <img src="./cartaBranca.png" alt="Logo" width="62" height="48" clase="d-inline-block align-text-top" />
           </Link>
           <li className="nav-item my-auto">
             <Link className="nav-link text-light fs-6" href="/listagem">Listagem</Link>
