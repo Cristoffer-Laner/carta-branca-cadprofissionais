@@ -1,4 +1,5 @@
 'use client'
+import ItensLista from "@/components/ItensLista"
 import { useEffect, useState } from "react"
 
 export default function Listagem() {
@@ -16,16 +17,10 @@ export default function Listagem() {
 	}, [])
 
 	const listaProfissionais = profissionais.map(profissional => (
-		<tr key={profissional.CPF}>
-			<td>
-				<img src={profissional.imagem} alt={`Imagem do Profissional ${profissional.nome}`} width={100} />
-			</td>
-			<td>{profissional.nome}</td>
-			<td>{profissional.CPF}</td>
-			<td>{profissional.dataNasc}</td>
-			<td>{profissional.especialidade}</td>
-			<td></td>
-		</tr>
+		<ItensLista
+			key={profissional.id}
+			profissional={profissional}
+		/>
 	))
 
 	if(isLoading){
