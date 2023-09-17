@@ -5,6 +5,7 @@ export default function Cadastro() {
     const { register, handleSubmit } = useForm()
 
     async function enviaDados(data) {
+		//boa pratica usando try catch
         try {
             console.log("entreiaqui");
             const profissional = await fetch("http://localhost:3004/profissionais", {
