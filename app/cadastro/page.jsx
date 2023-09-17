@@ -26,28 +26,28 @@ export default function Cadastro() {
 
             <form onSubmit={handleSubmit(enviaDados)}>
                 <div className="row">
-                    <div class="col-sm-6 my-2">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" {...register("nome")} required />
+                    <div className="col-sm-6 my-2">
+                        <label for="nome" className="form-label">Nome</label>
+                        <input type="text" className="form-control" id="nome" {...register("nome")} required />
                     </div>
-                    <div class="col-sm-6 my-2">
-                        <label for="CPF" class="form-label">CPF</label>
-                        <input type="number" class="form-control" id="CPF" {...register("CPF")} required />
+                    <div className="col-sm-6 my-2">
+                        <label for="CPF" className="form-label">CPF</label>
+                        <input type="number" className="form-control" id="CPF" {...register("CPF")} required />
                     </div>
                 </div>
 
                 <div className="row">
-                    <div class="col-sm-4 my-2">
-                        <label for="contato" class="form-label">Contato</label>
-                        <input type="text" class="form-control" id="contato" {...register("contato")} required />
+                    <div className="col-sm-4 my-2">
+                        <label for="contato" className="form-label">Contato</label>
+                        <input type="text" className="form-control" id="contato" {...register("contato")} required />
                     </div>
-                    <div class="col-sm-4 my-2">
-                        <label for="dataNasc" class="form-label">Data de Nascimento</label>
-                        <input type="date" class="form-control" id="dataNasc" {...register("dataNasc")} required />
+                    <div className="col-sm-4 my-2">
+                        <label for="dataNasc" className="form-label">Data de Nascimento</label>
+                        <input type="date" className="form-control" id="dataNasc" {...register("dataNasc")} required />
                     </div>
-                    <div class="col-sm-4 my-2">
-                        <label for="especialidade" class="form-label">Especialidade</label>
-                        <select class="form-select" id="especialidade" {...register("especialidade")} required >
+                    <div className="col-sm-4 my-2">
+                        <label for="especialidade" className="form-label">Especialidade</label>
+                        <select className="form-select" id="especialidade" {...register("especialidade")} required >
                             <option selected>Selecione -</option>
                             <option value="black-work">Black Work</option>
                             <option value="pontilhismo">Pontilhismo</option>
@@ -60,9 +60,9 @@ export default function Cadastro() {
                 </div>
 
                 <div className="row">
-                    <div class="col-sm-6 my-2">
-                        <label for="imagem" class="form-label">Foto de Perfil</label>
-                        <input type="file" class="form-control" id="imagem" />
+                    <div className="col-sm-6 my-2">
+                        <label for="imagem" className="form-label">Foto de Perfil</label>
+                        <input type="file" className="form-control" id="imagem" />
                     </div>
                 </div>
 
