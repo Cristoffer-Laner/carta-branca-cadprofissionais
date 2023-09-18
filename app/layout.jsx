@@ -2,8 +2,8 @@ import Titulo from '../components/Titulo'
 import 'bootstrap/dist/css/bootstrap.css'
 
 export const metadata = {
-  title: 'Controle de Filmes',
-  description: 'Estúdio Carta Branca Tatuaria, Tatuaria',
+  title: 'Controle de Profissionais',
+  description: 'Estudio Carta Branca Tatuaria, Tatuaria',
 }
 
 export default function RootLayout({ children }) {

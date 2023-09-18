@@ -17,7 +17,7 @@ export default function Cadastro() {
 			reset()
         } catch (error) {
             console.log("erro")
-            alert("Erro!")
+            //alert("Erro!")
         }
     }
 

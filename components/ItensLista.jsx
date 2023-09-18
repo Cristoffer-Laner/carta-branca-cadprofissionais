@@ -1,11 +1,27 @@
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import Swal from 'sweetalert2'
 
 export default function ItensLista(props){
 
 	function confirmaExclusao(id, nome){
-		if (confirm(`Confirma Exclusao do Profissional "${nome}"?`)){
-			props.exclusao(id)
-		}
+		Swal.fire({
+			title: `Confirma Exclusão do Profissional "${titulo}"?`,
+			text: "Esta operação não podera ser desfeita",
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Sim. Excluir!'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  props.exclui(id)
+			  Swal.fire(
+				'Exclusao!',
+				'Profissional Excluido com Sucesso!',
+				'success'
+			  )
+			}
+		  })
 
 	}
 	return(
@@ -20,9 +36,15 @@ export default function ItensLista(props){
 			<td>{props.profissional.especialidade}</td>
 			<td>
 				<i class="bi bi-x-circle-fill text-danger"
+					style={{fontSize:36, cursor: 'pointer'}}
+					onClick={() => confirmaExclusao(props.profissional.id, props.profissional.nome)}
+					title='Excluir'
+				></i>
+				<i class="bi bi-pencil text-warning ms-2"
 				style={{fontSize:36, cursor: 'pointer'}}
-				title='Excluir'
-				onClick={() => confirmaExclusao(props.profissional.id, props.profissional.nome)}></i>
+				onClick={props.altera}
+				title='Alterar'
+				></i>
 			</td>
 		</tr>
 	)

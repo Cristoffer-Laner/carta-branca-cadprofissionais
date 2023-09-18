@@ -1,10 +1,13 @@
 'use client'
 import ItensLista from "@/components/ItensLista"
 import { useEffect, useState } from "react"
+import {useRouter} from 'next/navigation'
 
 export default function Listagem() {
 	const [profissionais, setProfissionais] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
+
+	const router = useRouter()
 
 	useEffect(() => {
 		async function getProfissionais(){
@@ -29,6 +32,7 @@ export default function Listagem() {
 			key={profissional.id}
 			profissional={profissional}
 			exclusao={() => excluiProfissional(profissional.id)}
+			altera={() => router.push('altera/'+profissional.id)}
 		/>
 	))
 
@@ -42,7 +46,7 @@ export default function Listagem() {
 	}
     return (
 		<div className="container">
-			<h2 className="mt-3">Listagem de Filmes</h2>
+			<h2 className="mt-3">Listagem de Profissionais</h2>
 			<table className="table table-striped">
 				<thead>
 					<tr>
