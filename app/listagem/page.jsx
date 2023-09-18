@@ -33,6 +33,7 @@ export default function Listagem() {
 			profissional={profissional}
 			exclusao={() => excluiProfissional(profissional.id)}
 			altera={() => router.push('altera/'+profissional.id)}
+			consulta={() => router.push('consulta/'+profissional.id)}
 		/>
 	))
 

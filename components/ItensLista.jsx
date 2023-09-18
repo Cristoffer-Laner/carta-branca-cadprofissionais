@@ -5,7 +5,7 @@ export default function ItensLista(props){
 
 	function confirmaExclusao(id, nome){
 		Swal.fire({
-			title: `Confirma Exclusão do Profissional "${titulo}"?`,
+			title: `Confirma Exclusão do Profissional "${nome}"?`,
 			text: "Esta operação não podera ser desfeita",
 			icon: 'question',
 			showCancelButton: true,
@@ -41,10 +41,14 @@ export default function ItensLista(props){
 					title='Excluir'
 				></i>
 				<i class="bi bi-pencil text-warning ms-2"
-				style={{fontSize:36, cursor: 'pointer'}}
-				onClick={props.altera}
-				title='Alterar'
+					style={{fontSize:36, cursor: 'pointer'}}
+					onClick={props.altera}
+					title='Alterar'
 				></i>
+				<i class="bi bi-search text-success ms-2" style={{fontSize: 24, cursor: 'pointer'}}
+           			onClick={props.consulta}
+           			title="Consultar"
+        ></i>
 			</td>
 		</tr>
 	)
