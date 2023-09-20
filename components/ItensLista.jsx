@@ -1,9 +1,9 @@
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import Swal from 'sweetalert2'
 
-export default function ItensLista(props){
+export default function ItensLista(props) {
 
-	function confirmaExclusao(id, nome){
+	function confirmaExclusao(id, nome) {
 		Swal.fire({
 			title: `Confirma Exclusão do Profissional "${nome}"?`,
 			text: "Esta operação não podera ser desfeita",
@@ -12,43 +12,47 @@ export default function ItensLista(props){
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
 			confirmButtonText: 'Sim. Excluir!'
-		  }).then((result) => {
+		}).then((result) => {
 			if (result.isConfirmed) {
-			  props.exclui(id)
-			  Swal.fire(
-				'Exclusao!',
-				'Profissional Excluido com Sucesso!',
-				'success'
-			  )
+				props.exclusao(id)
+				Swal.fire(
+					'Exclusao!',
+					'Profissional Excluido com Sucesso!',
+					'success'
+				)
 			}
-		  })
+		})
 
 	}
-	return(
+	return (
 		<tr>
 			<td>
 				<img src={props.profissional.imagem}
-				alt={`Imagem do Profissional ${props.profissional.nome}`} width={100} />
+					alt={`Imagem do Profissional ${props.profissional.nome}`} width={100} />
 			</td>
-			<td>{props.profissional.nome}</td>
-			<td>{props.profissional.CPF}</td>
-			<td>{props.profissional.dataNasc}</td>
-			<td>{props.profissional.especialidade}</td>
+			<td className={props.profissional.destaque ? "fw-bold" : ""}>{props.profissional.nome}</td>
+			<td className={props.profissional.destaque ? "fw-bold" : ""}>{props.profissional.CPF}</td>
+			<td className={props.profissional.destaque ? "fw-bold" : ""}>{props.profissional.dataNasc}</td>
+			<td className={props.profissional.destaque ? "fw-bold" : ""}>{props.profissional.especialidade}</td>
 			<td>
 				<i class="bi bi-x-circle-fill text-danger"
-					style={{fontSize:36, cursor: 'pointer'}}
+					style={{ fontSize: 36, cursor: 'pointer' }}
 					onClick={() => confirmaExclusao(props.profissional.id, props.profissional.nome)}
 					title='Excluir'
 				></i>
 				<i class="bi bi-pencil text-warning ms-2"
-					style={{fontSize:36, cursor: 'pointer'}}
+					style={{ fontSize: 36, cursor: 'pointer' }}
 					onClick={props.altera}
 					title='Alterar'
 				></i>
-				<i class="bi bi-search text-success ms-2" style={{fontSize: 24, cursor: 'pointer'}}
-           			onClick={props.consulta}
-           			title="Consultar"
-        ></i>
+				<i class="bi bi-search text-success ms-2" style={{ fontSize: 24, cursor: 'pointer' }}
+					onClick={props.consulta}
+					title="Consultar"
+				></i>
+				<i className="bi bi-house-check text-primary ms-2" style={{ fontSize: 24, cursor: 'pointer' }}
+					onClick={props.destaca}
+					title="Destacar"
+				></i>
 			</td>
 		</tr>
 	)

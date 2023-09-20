@@ -1,12 +1,12 @@
 import Link from "next/link"
 
 async function getProfissionais(id) {
-  const response = await fetch("http://localhost:3004/profissionais/"+id)
+  const response = await fetch("http://localhost:3004/profissionais/" + id)
   const dado = await response.json()
   return dado
 }
 
-export default async function Consulta({params}) {
+export default async function Consulta({ params }) {
 
   const profissional = await getProfissionais(params.id)
 
@@ -29,6 +29,16 @@ export default async function Consulta({params}) {
           </div>
         </div>
 
+        <div className="col-sm-2">
+          <p>Status do Filme:</p>
+          <div className="form-check form-switch">
+            <input className="form-check-input" type="checkbox"
+              id="destaque"
+              {...register("destaque")} />
+            <label className="form-check-label" htmlFor="destaque">Destaque</label>
+          </div>
+        </div>
+
         <div className="row mt-3">
           <div className="col-sm-4">
             <label htmlFor="dataNasc" className="form-label">Data de Nascimento</label>
@@ -38,7 +48,7 @@ export default async function Consulta({params}) {
         <div className="row mt-3">
           <div className="col-sm-6">
             <p className="form-label">Foto de Perfil</p>
-            <img src={profissional.imagem} alt={`Foto de Perfil ${profissional.imagem}`} width={150} height={210} className="mx-auto d-block"/>
+            <img src={profissional.imagem} alt={`Foto de Perfil ${profissional.imagem}`} width={150} height={210} className="mx-auto d-block" />
           </div>
         </div>
 

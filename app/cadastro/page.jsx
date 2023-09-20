@@ -5,7 +5,7 @@ export default function Cadastro() {
     const { register, handleSubmit, reset } = useForm()
 
     async function enviaDados(data) {
-		//boa pratica usando try catch
+        //boa pratica usando try catch
         try {
             const profissional = await fetch("http://localhost:3004/profissionais", {
                 method: "POST",
@@ -14,7 +14,7 @@ export default function Cadastro() {
                 },
                 body: JSON.stringify({ ...data })
             })
-			reset()
+            reset()
         } catch (error) {
             console.log("erro")
             //alert("Erro!")
@@ -58,17 +58,26 @@ export default function Cadastro() {
                             <option value="musico">Músico</option>
                         </select>
                     </div>
+                    <div className="col-sm-2">
+                        <p>Status do Filme:</p>
+                        <div className="form-check form-switch">
+                            <input className="form-check-input" type="checkbox"
+                                id="destaque"
+                                {...register("destaque")} />
+                            <label className="form-check-label" htmlFor="destaque">Destaque</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="row">
                     <div className="col-sm-6 my-2">
                         <label for="imagem" className="form-label">Foto de Perfil</label>
-                        <input type="url" className="form-control" id="imagem" {...register("imagem")} required/>
+                        <input type="url" className="form-control" id="imagem" {...register("imagem")} required />
                     </div>
                 </div>
 
                 <input type="submit" className="btn bg-dark me-3 mt-2 text-light" value="Cadastrar" />
-                <input type="button" className="btn bg-dark mt-2 text-light" value="Limpar" onClick={() => reset()}/>
+                <input type="button" className="btn bg-dark mt-2 text-light" value="Limpar" onClick={() => reset()} />
             </form >
         </div >
     )
