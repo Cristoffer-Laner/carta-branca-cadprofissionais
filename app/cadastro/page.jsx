@@ -1,5 +1,5 @@
 'use client'
-import { useForm } from 'react-hook-form'
+import { get, useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import { useEffect, useState } from 'react'
 
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function Cadastro() {
     const { register, handleSubmit, reset } = useForm()
+    const [especialidades, setEspecialidades] = useState([]);
 
     async function enviaDados(data) {
         //boa pratica usando try catch
@@ -32,15 +33,20 @@ export default function Cadastro() {
         }
     }
 
-    const getCategorias = async () => {
-        try {
-            const response = await fetch("http://localhost:3004/profissionais")
-            const dados = await response.json()
-            return Array.from(dados)
-        } catch (error) {
-
+    useEffect(() => {
+        async function getEspecialidades() {
+            try {
+                const response = await fetch("http://localhost:3004/especialidades")
+                const dados = await response.json()
+                setEspecialidades(dados)
+            } catch (error) {
+                console.log("erroerroerroerroerroerroerroerroerroerroerroerroerroerroerro");
+            }
         }
-    }
+        getEspecialidades()
+    }, [])
+
+
 
     return (
         <div className="container">
@@ -70,13 +76,11 @@ export default function Cadastro() {
                     <div className="col-sm-4 my-2">
                         <label for="especialidade" className="form-label">Especialidade</label>
                         <select className="form-select" id="especialidade" {...register("especialidade")} required >
-                            <option selected>Selecione</option>
-                            <option value="black-work">Black Work</option>
-                            <option value="pontilhismo">Pontilhismo</option>
-                            <option value="old-school">Old School</option>
-                            <option value="minimalista">Minimalista</option>
-                            <option value="mão-livre">A mão livre</option>
-                            <option value="musico">Músico</option>
+                            {especialidades.map((especialidade) => (
+                                <option key={especialidade.id} value={especialidade.descricao}>
+                                    {especialidade.descricao}
+                                </option>
+                            ))}
                         </select>
                     </div>
                     <div className="col-sm-2">
