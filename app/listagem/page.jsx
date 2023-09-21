@@ -90,6 +90,15 @@ export default function Listagem() {
 		setProfissionais(dados)
 	}
 
+	function ordenarEspecialidade() {
+		async function getEspecialidade() {
+			const response = await fetch("http://localhost:3004/profissionais?_sort=nome&_order=asc")
+			const dados = await response.json()
+			setProfissionais(dados)
+		}
+		getEspecialidade()
+	}
+
 	if (isLoading) {
 		return (
 			<div className="container">
@@ -106,7 +115,7 @@ export default function Listagem() {
 					<h2 className="mt-2">Listagem de Profissionais</h2>
 				</div>
 				<div className="col-sm-5">
-					<Pesquisa filtra={filtraDados} mostra={mostraTodos} />
+					<Pesquisa filtra={filtraDados} mostra={mostraTodos} ordenarByEspecialidade={ordenarEspecialidade} />
 				</div>
 			</div>
 			<table className="table table-striped">

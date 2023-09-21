@@ -14,6 +14,9 @@ export default function Titulo() {
           <li className="nav-item my-auto">
             <Link className="nav-link text-light fs-6" href="/listagem">Listagem</Link>
           </li>
+          <li className="my-auto">
+            <Link className="nav-link text-light fs-6" href="/graficos">Gráficos</Link>
+          </li>
         </ul>
       </div>
     </nav>

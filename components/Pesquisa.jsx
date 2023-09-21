@@ -25,7 +25,12 @@ export default function Pesquisa(props) {
                 <button className="btn btn-primary" type="submit">Pesquisar</button>
             </div>
             <div className="col-12">
-                <button className="btn btn-warning" type="reset">Ver Todos</button>
+                <button className="btn btn-primary" type="reset">Ver Todos</button>
+            </div>
+            <div className="col-12">
+                <button className="btn btn-warning" type="button" onClick={props.ordenarByEspecialidade}>
+                    Ordenar
+                </button>
             </div>
         </form>
     )
