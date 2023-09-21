@@ -1,5 +1,10 @@
 'use client'
 import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify';
+import { useEffect, useState } from 'react'
+
+import 'react-toastify/dist/ReactToastify.css'
+
 
 export default function Cadastro() {
     const { register, handleSubmit, reset } = useForm()
@@ -14,10 +19,26 @@ export default function Cadastro() {
                 },
                 body: JSON.stringify({ ...data })
             })
+            console.log(profissional.status)
+            if (profissional.status == 201) {
+                toast.success("Ok! Profissional cadastrado com sucesso")
+            } else {
+                toast.error("Erro... Não foi possível concluir o cadastro")
+            }
             reset()
         } catch (error) {
             console.log("erro")
             //alert("Erro!")
+        }
+    }
+
+    const getCategorias = async () => {
+        try {
+            const response = await fetch("http://localhost:3004/profissionais")
+            const dados = await response.json()
+            return Array.from(dados)
+        } catch (error) {
+
         }
     }
 
@@ -79,6 +100,18 @@ export default function Cadastro() {
                 <input type="submit" className="btn bg-dark me-3 mt-2 text-light" value="Cadastrar" />
                 <input type="button" className="btn bg-dark mt-2 text-light" value="Limpar" onClick={() => reset()} />
             </form >
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div >
     )
 }

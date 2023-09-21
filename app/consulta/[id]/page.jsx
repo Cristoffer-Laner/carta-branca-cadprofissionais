@@ -29,16 +29,6 @@ export default async function Consulta({ params }) {
           </div>
         </div>
 
-        <div className="col-sm-2">
-          <p>Status do Filme:</p>
-          <div className="form-check form-switch">
-            <input className="form-check-input" type="checkbox"
-              id="destaque"
-              {...register("destaque")} />
-            <label className="form-check-label" htmlFor="destaque">Destaque</label>
-          </div>
-        </div>
-
         <div className="row mt-3">
           <div className="col-sm-4">
             <label htmlFor="dataNasc" className="form-label">Data de Nascimento</label>
