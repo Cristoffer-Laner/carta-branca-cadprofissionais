@@ -79,7 +79,7 @@ export default function Alteracao() {
           </div>
 
           <div className="col-sm-2">
-            <p>Status do Filme:</p>
+            <p>Status do Profissional:</p>
             <div className="form-check form-switch">
               <input className="form-check-input" type="checkbox"
                 id="destaque"
